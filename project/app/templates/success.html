@@ -1,0 +1,49 @@
+<h2>Appointment booked successfully!</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            color:rgb(11, 11, 11);
+        }
+        .details {
+            margin-top: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Appointment Confirmed!</h2>
+        <div class="details">
+            <p><strong>Patient Name:</strong> {{ patient.name }}</p>
+            <p><strong>Phone Number:</strong> {{ patient.phone }}</p>
+            <p><strong>Email:</strong> {{ patient.email }}</p>
+            <p><strong>Symptoms:</strong> {{ patient.symptoms }}</p>
+            <p><strong>Date:</strong> {{ patient.date }}</p>
+            <p><strong>Time:</strong> {{ patient.time }}</p>
+            <p><strong>Department:</strong> {{ patient.department }}</p>
+            <p><strong>Gender:</strong> {{ patient.gender }}</p>
+        </div>
+    </div>
+</body>
+</html>

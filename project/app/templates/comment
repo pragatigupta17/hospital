@@ -1,0 +1,67 @@
+#def appoiment(request):
+''' if request.method == 'POST':
+        print(request.POST)
+        print(request.FILES)
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        phone=request.POST.get('phone')
+        gender=request.POST.get('gender')
+        date=request.POST.get('date')
+        time=request.POST.get('time')
+        image=request.FILES.get('image')
+        symptoms=request.POST.get('symptoms')
+        print(name,email,phone,date,time,image,symptoms)
+        user = Patient.objects.filter(email=email)
+        if user:
+            x = "Email already exist"
+            return render(request, 'appoiment.html', {'msg': x})
+        else:
+            pass
+        if email==email:
+            Patient.objects.create(name=name,email=email,phone=phone,gender=gender,date=date,time=time,image=image,symptoms=symptoms,)
+            x = "Appoiment booked successfully"
+            return render(request,'appoiment.html',{'msg':x})
+        else:
+            x = "email not match"
+            return render(request,'appoiment.html',{'msg':x,'name':name,'email':email,'phone':phone,'gender':gender,'date':date,'time':time,'image':image,'symptoms':symptoms})
+     else:
+        return render(request, 'appoiment.html')  
+    
+    return render(request,'appoiment.html')
+'''
+'''
+def appoiment(request):
+     if request.method == "POST":
+         print(request.POST)
+         print(request.FILES)
+         name=request.POST.get('name')
+         email=request.POST.get('email')
+         phone=request.POST.get('phone')
+         gender=request.POST.get('gender')
+         date=request.POST.get('date')
+         time=request.POST.get('time')
+         image=request.FILES.get('image')
+         symptoms=request.POST.get('symptoms')
+         print(name,email,phone,gender,date,time,image,symptoms)
+         form=Appointment(name=name,email=email,phone=phone,gender=gender,date=date,time=time,image=image,symptoms=symptoms)
+         print(form)
+         form.save()
+         return render(request,'appoiment.html',{'form':form})
+     if request.method == "POST":
+        print(request.POST)
+        print(request.FILES)
+
+        form = Appointment(request.POST, request.FILES)  
+
+        if form.is_valid():
+            form = form.save()  
+            messages.success(request, "Appointment booked successfully!")
+            return render(request, 'appoiment.html', {'form': form})  
+        else:
+            messages.error(request, "Error in form submission. Please check your details.")
+
+     else:
+        form = AppointmentForm()
+
+        return render(request, "appoiment.html", {"form": form})
+     return render(request,'appoiment.html')'''

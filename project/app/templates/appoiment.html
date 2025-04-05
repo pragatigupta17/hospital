@@ -1,0 +1,166 @@
+{%  extends "patientbase.html" %}
+
+{% load static %}
+
+ <title>   {% block title %} USER REGISTRATION {% endblock %} </title>
+</head>
+<body>
+{% block content %}
+<style>
+ .image {
+    font-family: Arial, sans-serif;
+     background-image: url("{% static 'images/hospitalback.jpg' %}");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    background-attachment: fixed; 
+} 
+.image  .msg {
+    font-size: 10px;
+    color: white;
+    justify-content:center;
+    margin-top:50px;
+}
+  .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            width: 800px;
+            text-align: center;
+            opacity: 0.6;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .form-group div {
+            width: 48%;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .btn {
+            width: 100%;
+            background: #ff8800;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: #e67e00;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="image">
+ <div class="msg">
+         {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ messages.tags }}">
+            {{ messages }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+         </div>
+    <div class="container">
+        <h2>MEDICAL APPOINTMENT FORM</h2>
+        <h3>MAKE AN APPOINTMENT</h3>
+        <form action="{% url 'appoiment' %}" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+            <div class="form-group">
+                <div>
+                    <label for="name">Patient Name</label>
+                    <input type="text" id="name" name="name" value={{name}}>
+                </div>
+                <div>
+                    <label for="date">Select Date</label>
+                    <input type="date" id="date" name="date" value={{date}}>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel"id="phone" name="phone" value={{phone}}>
+                </div>
+                <div>
+                    <label for="department">Department</label>
+                    <select type="department" id="department" name="department" value={{department}}>
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="radiology">Radiology</option>
+                        <option value="dermology">Dermology</option>
+                        <option value="anesthesilogy">Anesthesilogy</option>
+                        <option value="gyanology">Gyanology</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value={{email}}>
+                </div>
+                <div>
+                    <label for="gender">Gender</label>
+                    <select type="gender" id="gender" name="gender" value={{gender}}>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="symptoms">Symptoms</label>
+                    <input type="text" id="symptoms" name="symptoms" rows="2" value={{symptoms}}>
+                </div>
+                <div>
+                    <label for="time">Time</label>
+                    <input type="time" id="time" name="time" value={{time}}>
+
+                </div>
+            </div>
+            <button type="submit" class="btn">Make an appointment</button>
+        </form>
+    </div>
+    </div>
+     {% endblock %}
+</body>
+</html>

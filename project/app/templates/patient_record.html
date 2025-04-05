@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% block content %}
+{% block css%} 
+ <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+ <style>
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+    border: 2px solid #ddd;
+}
+
+th {
+    background-color:rgb(151, 146, 146);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+td a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+td a[href*="patientbase"] {
+    background-color:rgb(221, 181, 181);
+    color: black;
+    padding: 5px 10px;
+}
+
+
+
+td a:hover {
+    opacity: 0.8;
+}
+@media (max-width: 768px) {
+    table {
+        width: 90%;
+        font-size: 16px;
+    }
+    
+    th, td {
+        padding: 10px;
+    }
+
+    td a {
+        padding: 4px 8px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    
+    .table-container {
+        overflow-x: auto;
+        display: block;
+    }
+
+    td a {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}
+</style>
+{% endblock %}
+
+<center>
+<table border='2'>
+<tr>
+<th>S.No</th>
+<th>Patient Name</th>
+<th>Patient Email</th>
+<th>Patient Contact</th>
+<th>Patient Gender </th>
+<th>Patient ID</th>
+<th>Occupation </th>
+
+
+
+</tr>
+
+{% for i in data %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td>{{i.name}}</td>
+<td>{{i.email}}</td>
+<td>{{i.phone}}</td>
+<td>{{i.gender}}</td>
+<td>{{i.image}}</td>
+<td>{{i.occupation}}</td>
+
+
+
+             
+</tr>
+{% endfor %}
+</table>
+</center>
+{% endblock %}

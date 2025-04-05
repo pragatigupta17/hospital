@@ -1,0 +1,91 @@
+.image{
+    background-image: url("{% static 'images/hospitalback.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+    border: 2px solid #ddd;
+}
+
+th {
+    background-color:rgb(151, 146, 146);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+td a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+td a[href*="update"] {
+    background-color:rgb(221, 181, 181);
+    color: black;
+    padding: 5px 10px;
+}
+
+td a[href*="delete"] {
+    background-color:rgb(111, 108, 108);
+    color: white;
+    padding: 5px 10px;
+}
+
+td a:hover {
+    opacity: 0.8;
+}
+@media (max-width: 768px) {
+    table {
+        width: 90%;
+        font-size: 16px;
+    }
+    
+    th, td {
+        padding: 10px;
+    }
+
+    td a {
+        padding: 4px 8px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    
+    .table-container {
+        overflow-x: auto;
+        display: block;
+    }
+
+    td a {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}

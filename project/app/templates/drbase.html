@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>base</title>
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+ 
+</head>
+<body>
+    <style>
+        section#client {
+            height: calc(100vh - 60px);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: left;
+            text-align: center;
+            color: white;
+            height: 90vh;
+            background-image: url("{% static 'images/bghospital.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+         #client h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color:rgb(24, 23, 23);
+        }
+        
+        #client h1 span {
+            color: rgb(170, 215, 244);
+        }
+        #client p {
+            font-size:1.5rem;
+            color:rgb(44, 35, 35);
+        } 
+        </style>
+         {% endblock %}
+            <nav class="navbar">
+                <div class="logo">DOCTORS</div>
+                
+            
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger">&#9776;</label>
+        
+            
+                <ul class="nav-links">
+                    {% comment %} <li><a href="{% url 'booking' %}">Doctor's </a></li> {% endcomment %}
+                    <li><a href="{% url 'drtable' %}">Doctor's List</a></li>
+                    <li><a href="{% url 'patient_record2' %}">patient's</a></li>
+                    <li><a href="{% url 'patient_list' %}">Appointment</a></li>
+                    <li><a href="{% url 'landing' %}">Logout</a></li>
+        
+                    
+                </ul>
+            </nav>
+        {% block content %}
+        <main>
+            <section id ="client"> 
+             
+             <h1>hello welcome Doctor {{name}} {{image}} <br>
+                    {{email}} </h1><br>
+                    <h1>you are logged in as a {{specilastion}} doctor</h1>
+                 <p><br>We heal the body, mind, and soul. 🌈✨<br>
+                    Proud to be part of the healthcare tribe. 🩺🙌 <br>
+                    Experience the best doctors and best treatments at our hightech hospital.<br> 
+                    We provide top-notch services to make you feel your best..</p> 
+                 
+         </section>
+        </main> 
+        
+        {% endblock %}
+        
+        <footer class="footer">
+                <div class="footer-container">
+                    
+                    <div class="footer-section about">
+                        <h2>About Us</h2>
+                        <p>Experience the best doctors and best treatments at our hightech hospital. We provide top-notch services to make you feel your best.</p>
+                    </div>
+        
+                    
+                    <div class="footer-section contact">
+                        <h2>Contact Us</h2>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 hospital Street, City, Country</p>
+                        <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                        <p><i class="fas fa-envelope"></i> info@hospital.com</p>
+                    </div>
+        
+                
+                    <div class="footer-section social">
+                        <h2>Follow Us</h2>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+        
+                
+                <div class="footer-bottom">
+                    &copy; 2025 Hospital | All Rights Reserved to PRAGATI GUPTA
+                </div>
+            </footer>
+</body>
+</html>

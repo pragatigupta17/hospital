@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% block content %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/booking_table.css' %}" />
+{% endblock %}
+
+
+
+
+<div class=image>
+<center>
+<table border='2'>
+<tr>
+<th>S.No</th>
+<th>Doctor Name</th>
+<th>Doctor Email</th>
+<th>Doctor Contact</th>
+<th>Doctor Address </th>
+<th>Doctor Specisation </th>
+<th>Doctor Image</th>
+<th>Doctor Password</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+
+{% for i in data %}
+
+<tr>
+ <td>{{forloop.counter}}</td>
+<td>{{i.name}}</td>
+<td>{{i.email}}</td>
+<td>{{i.phone}}</td>
+<td>{{i.address}}</td>
+<td>{{i.Specilastion}}</td>
+<td>{{i.image}}</td>
+<td>{{i.password}}</td>
+{% comment %} <td><a href="#">Edit</a></td>
+<td><a href="#">Delete</a></td> {% endcomment %}
+<td><a href="{% url 'update' pk=i.id %}">Edit</a></td>
+<td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+</center>
+</div>
+{% endblock %}
