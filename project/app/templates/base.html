@@ -19,7 +19,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            align-items: left;
+            text-align: left;
             text-align: center;
             color: white;
             height: 90vh;
@@ -43,6 +43,105 @@
             font-size:1.5rem;
             color:rgb(44, 35, 35);
         } 
+
+ @media (max-width: 1200px) {
+    #client h1 {
+        font-size: 2.7rem;
+    }
+
+    #client p {
+        font-size: 1.4rem;
+    }
+}
+
+
+@media (max-width: 992px) {
+    section#client {
+        padding: 0 4vw;
+    }
+
+    #client h1 {
+        font-size: 2.3rem;
+    }
+
+    #client p {
+        font-size: 1.3rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    section#client {
+        align-items: center;
+        text-align: center;
+        padding: 0 3vw;
+    }
+
+    #client h1 {
+        font-size: 2rem;
+    }
+
+    #client p {
+        font-size: 1.1rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    section#client {
+        padding: 0 2vw;
+        height: auto;
+    }
+
+    #client h1 {
+        font-size: 1.6rem;
+    }
+
+    #client p {
+        font-size: 1rem;
+    }
+}
+
+
+@media (max-width: 360px) {
+    section#client {
+        padding: 10px;
+    }
+
+    #client h1 {
+        font-size: 1.4rem;
+    }
+
+    #client p {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (max-width: 320px) {
+    section#client {
+        padding: 8px;
+    }
+
+    #client h1 {
+        font-size: 1.2rem;
+    }
+
+    #client p {
+        font-size: 0.8rem;
+    }
+}
+
+
+@media (max-width: 280px) {
+    #client h1 {
+        font-size: 1rem;
+    }
+
+    #client p {
+        font-size: 0.7rem;
+    }
+}
         </style>
          {% endblock %}
             <nav class="navbar">

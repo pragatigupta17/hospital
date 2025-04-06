@@ -20,19 +20,17 @@ background-size: 100% 100%;
 background-position: center;
 background-attachment: fixed; 
 } 
-
-
-  .image  .msg { 
-    font-size: 10px;
-    color: white;
-    justify-content:center;
-    margin-top:50px;
+.msg {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-        h2 {
-            text-align: center;
-            color:white;
-        }
+.msg h1 {
+  color: #fff;
+  background: linear-gradient(135deg,rgb(7, 7, 7),rgb(182, 221, 242));
+  padding: 10px;
+  border-radius: 5px;
+}
 .container {
             background: rgba(0, 0, 0, 0.6);
             padding: 30px;
@@ -105,19 +103,143 @@ background-attachment: fixed;
             font-size: 12px;
         }
 
+
+        /* Tablet and below */
+/* Large screens */
+@media screen and (min-width: 1025px) {
+  .container {
+    max-width: 800px;
+  }
+}
+
+/* Tablets and small desktops */
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .form-group {
+    flex-direction: row;
+  }
+}
+
+/* Tablets and below */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 15px;
+    max-width: 95%;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .form-group div {
+    width: 100%;
+  }
+
+  input, select {
+    font-size: 15px;
+    padding: 8px;
+  }
+
+  .msg h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  input, select {
+    font-size: 14px;
+  }
+}
+
+/* Extra small mobile (319px and below) */
+@media screen and (max-width: 319px) {
+  .container {
+    padding: 8px;
+  }
+
+  .msg h1 {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  input, select {
+    font-size: 13px;
+    padding: 6px;
+  }
+}
+
+
+/* Ultra small screens (319px and below) */
+@media screen and (max-width: 319px) {
+  .container {
+    width: 100%;
+    padding: 7px;
+    height:100%;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .form-group div {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .msg h1 {
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  label {
+    font-size: 11px;
+  }
+
+  input, select {
+    padding: 6px;
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
+
   </style>
   
 
 
  <div class="image">
        <div class="msg">
-         {% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{ messages.tags }}">
-            {{ messages }}
-        </div>
-    {% endfor %}
-{% endif %}
+        <h1>{{msg}}</h1>
 </div>
     <div class="container">
 <h2>REGISTER HERE</h2>

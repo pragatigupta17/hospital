@@ -178,7 +178,6 @@ def appoiment(request):
         gender = request.POST.get('gender')
         time = request.POST.get('time')
         
-        # Save the data to the database
         appoiment = Appoiment(
             name=name,
             phone=phone,
@@ -190,11 +189,10 @@ def appoiment(request):
             time=time
         )
         appoiment.save()
-        return redirect('success')  # Redirect to a success page
+        return redirect('success.html')  
     
     return render(request, 'appoiment.html')
 
-# View for the success page
     
 def success(request, patient_registration_id):
     try:

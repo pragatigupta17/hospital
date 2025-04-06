@@ -52,40 +52,70 @@ td a[href*="delete"] {
 td a:hover {
     opacity: 0.8;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     table {
-        width: 90%;
-        font-size: 16px;
+      width: 90%;
+      font-size: 16px;
     }
-    
-    th, td {
-        padding: 10px;
-    }
-
-    td a {
-        padding: 4px 8px;
-    }
-}
-
-
-@media (max-width: 480px) {
+  }
+  
+  @media screen and (max-width: 768px) {
     table {
-        width: 100%;
-        font-size: 14px;
+      width: 100%;
+      font-size: 14px;
+      margin: 10px 0;
     }
-
+  
     th, td {
-        padding: 8px;
+      padding: 10px;
     }
-
-    
-    .table-container {
-        overflow-x: auto;
-        display: block;
-    }
-
+  
     td a {
-        padding: 3px 6px;
-        font-size: 12px;
+      font-size: 12px;
+      padding: 4px 8px;
     }
-}
+  }
+  
+  @media screen and (max-width: 480px) {
+    table {
+      width: 100%;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      border: none;
+    }
+  
+    thead {
+      display: none; /* hide table header on tiny screens */
+    }
+  
+    tr {
+      display: block;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+    }
+  
+    td {
+      display: block;
+      text-align: right;
+      font-size: 14px;
+      padding: 10px;
+      position: relative;
+    }
+  
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      text-align: left;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    td a {
+      font-size: 14px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+  }
+  

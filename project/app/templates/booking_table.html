@@ -14,7 +14,7 @@
 
 
 
-<div class=image>
+<div class="image">
 <center>
 <table border='2'>
 <tr>
@@ -41,8 +41,7 @@
 <td>{{i.Specilastion}}</td>
 <td>{{i.image}}</td>
 <td>{{i.password}}</td>
-{% comment %} <td><a href="#">Edit</a></td>
-<td><a href="#">Delete</a></td> {% endcomment %}
+
 <td><a href="{% url 'update' pk=i.id %}">Edit</a></td>
 <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
 </tr>

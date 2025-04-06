@@ -65,3 +65,6 @@ def appoiment(request):
 
         return render(request, "appoiment.html", {"form": form})
      return render(request,'appoiment.html')'''
+
+
+  
