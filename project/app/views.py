@@ -3,8 +3,11 @@ from app import views
 from .models import Doctor
 from .models import Appoiment
 from .models import Patient
+from .models import Product
 from django.contrib import messages
 from django.http import HttpResponse
+import razorpay
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def landing(request):
     adminemail="pragati@gmail.com"
@@ -259,3 +262,46 @@ def appoiment_list(request):
     pt = Patient.objects.all()
     print(pt)
     return render(request,'appoiment_list.html',{'data':pt})
+
+
+def payment(request):
+    if request.method=="POST":
+        amount = int(request.POST.get('amount'))
+        
+        client = razorpay.Client(auth =("rzp_test_pr99iascS1WRtU" , "UTDIzPGwICnAssu3Q3lk7zUi"))
+        # create order
+         
+        data = { "amount": amount * 100,
+                 "currency": "INR", 
+                 "receipt": "order_rcptid_11",
+                 "payment_capture": 1
+                }
+        payment = client.order.create(data=data)
+        product = Product.objects.create( amount =amount , order_id = payment['id'])
+        # print(payment)
+        return render(request,'success.html',{'amount':amount,'payment':payment})
+    return render(request,'success.html',{'amount':amount})
+
+
+def payment_status(request):
+       if request.method=="POST": 
+        response = request.POST
+        # print(response) 
+        razorpay_data = {
+            'razorpay_order_id': response['razorpay_order_id'],
+            'razorpay_payment_id': response['razorpay_payment_id'],
+            'razorpay_signature': response['razorpay_signature']
+        }
+
+        # client instance
+        client = razorpay.Client(auth =("rzp_test_pr99iascS1WRtU" , "UTDIzPGwICnAssu3Q3lk7zUi"))
+
+        try:
+            status = client.utility.verify_payment_signature(razorpay_data)
+            product = Product.objects.get(order_id=response['razorpay_order_id'])
+            product.razorpay_payment_id = response ['razorpay_payment_id']
+            product.paid = True
+            product.save()
+            return render(request, 'ptm.html', {'status': True})
+        except:
+            return render(request, 'ptm.html', {'status': False})

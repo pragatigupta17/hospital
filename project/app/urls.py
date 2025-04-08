@@ -21,5 +21,7 @@ urlpatterns = [
     path('update/<int:pk>',views.update,name='update'),
     path('delete/<int:pk>',views.delete,name='delete'),
     path('edit/<int:pk>',views.edit,name='edit'),
+    path('payment/',views.payment,name='payment'),
+    path('payment-status/',views.payment_status,name='payment-status'),
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
