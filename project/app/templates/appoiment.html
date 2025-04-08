@@ -101,7 +101,7 @@
     <div class="container">
         <h2>MEDICAL APPOINTMENT FORM</h2>
         <h3>MAKE AN APPOINTMENT</h3>
-        <form action="{% url 'appoiment' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'appoiment_list' pk=id %}" method="post" enctype="multipart/form-data">
          {% csrf_token %}
             <div class="form-group">
                 <div>

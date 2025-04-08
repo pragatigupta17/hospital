@@ -244,8 +244,8 @@ background-attachment: fixed;
     <div class="container">
 <h2>REGISTER HERE</h2>
 <h3>MAKE AN APPOINTMENT</h3>
- <form action="{% url 'patient_registration' %}"method="post" enctype="multipart/form-data">
-{% csrf_token %}
+ <form action="{% url 'patient_registration' pk=patient.id %}"method="post" enctype="multipart/form-data">
+  {% csrf_token %}
     <div class="form-group">
     <div>
     <label for="name">Full Name:</label>
@@ -297,7 +297,7 @@ background-attachment: fixed;
     </div>
     </div>
 
-    <button type="submit" class="btn">Book Appointment</button>
+    <button type="submit" class="btn">Registration</button>
    </form>
  
  </div>

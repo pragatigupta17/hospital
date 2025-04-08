@@ -159,7 +159,7 @@
         </style>
          {% endblock %}
             <nav class="navbar">
-                <div class="logo">PATIENT</div>
+                <div class="logo">PATIENT{{id}}{{name}}</div>
                 
             
                 <input type="checkbox" id="menu-toggle">
@@ -167,7 +167,7 @@
         
             
                 <ul class="nav-links">
-                    <li><a href="{% url 'appoiment' %}"> DR.Appoiment</a></li>
+                    <li><a href="{% url 'appoiment' pk=id %}"> {{id}}DR.Appoiment</a></li>
                     <li><a href="{% url 'landing' %}">Logout</a></li>
         
                     

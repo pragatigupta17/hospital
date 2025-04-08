@@ -11,35 +11,30 @@ def landing(request):
     adminpassword="pragati"
     email=request.POST.get('email')
     password=request.POST.get('password')
-    user=Doctor.objects.filter(email=email)
     if (email==adminemail and password==adminpassword):
         # return HttpResponse("Welcome Admin")
         return render(request, 'base.html')
-    if user.exists():
-        data=Doctor.objects.get(email=email)
-        pass1=data.password
-        if password==pass1:
-            # return HttpResponse("Welcome User")
-            return render(request, 'drbase.html',{'name':data.name,'email':data.email,'password':data.password})
-        else:
-                return render(request, 'landing.html',{'message':'Invalid email and Password'})
+    else:
+        druser = Doctor.objects.filter(email=email)
+        ptuser = Patient.objects.filter(email=email)
+        if druser.exists():
+            data=Doctor.objects.get(email=email)
+            pass1=data.password
+            if password==pass1:
+                # return HttpResponse("Welcome User")
+                return render(request, 'drbase.html',{'id':data.id,'name':data.name,'email':data.email,'password':data.password})
+            else:
+                    return render(request, 'landing.html',{'message':'Invalid email and Password'})
+        elif ptuser.exists():
+            data=Patient.objects.get(email=email)
+            pass1=data.password
+            if password==pass1:
+                # return HttpResponse("Welcome User")
+                return render(request, 'patientbase.html',{'id':data.id,'name':data.name,'email':data.email,'password':data.password})
+            else:
+                    return render(request, 'landing.html',{'message':'Invalid email and Password'})
     return render(request,'landing.html')
 
-    if user.exists():
-        data = Patient.objects.get(email=email)
-        user_password = data.password
-        if password == user_password:
-            return render(request, 'patientbase.html', {
-                'name': data.name,
-                'email': data.email,
-                'password': data.password
-            })
-        else:
-            return render(request, 'landing.html', {
-                'message': 'Invalid email and Password'
-            })
-
-    return render(request, 'landing.html')
 
    
 
@@ -104,7 +99,7 @@ def update(request,pk):
          x.image = u
          x.password = v
          x.save()
-         emp=Doctor.objects.all()
+         dr=Doctor.objects.all()
     x=Doctor.objects.get(id=pk)
     print(x)
     
@@ -113,8 +108,8 @@ def update(request,pk):
 def delete(request,pk):
     data = Doctor.objects.get(id=pk)
     data.delete()
-    emp = Doctor.objects.all()
-    return render(request, 'booking_table.html',{'data':emp})
+    dr = Doctor.objects.all()
+    return render(request, 'booking_table.html',{'data':dr})
 
 
 def edit(request,pk):
@@ -150,11 +145,19 @@ def patient_record(request):
      print(pt)
      return render(request,'patient_record.html',{'data':pt})
 
+
+
 def patient_record2(request):
     pt2 = Patient.objects.all()
     print(pt2)
     return render(request,'patient_record2.html',{'data':pt2})
 
+
+# def delete(request,pk):
+#     data = Patient.objects.get(id=pk)
+#     data.delete()
+#     pt2 = Patient.objects.all()
+#     return render(request, 'patient_record2.html',{'data':pt2})
 
 def patient_list(request):
     return render(request,'patient_list.html')
@@ -167,8 +170,11 @@ def drtable(request):
 def patientbase(request):
     return render(request,'patientbase.html')
 
-def appoiment(request):
-    if request.method == 'POST':
+def appoiment(request,pk):
+    return render(request,'appoiment.html',{'id':pk})
+
+def appoiment_data(request,pk):
+    if request.method=="POST":    
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         email = request.POST.get('email')
@@ -189,14 +195,15 @@ def appoiment(request):
             time=time
         )
         appoiment.save()
-        return redirect('success.html')  
-    
-    return render(request, 'appoiment.html')
+        id=pk
+        return redirect(f'/success/?id={id}')
 
     
-def success(request, patient_registration_id):
+def success(request):
+    iddd = request.GET.get('id')
+    print(iddd)
     try:
-        patient = Patient.objects.get(id=patient_registration_id)
+        patient = Patient.objects.get(id=iddd)
         return render(request, 'success.html', {'patient': patient})
     except Patient.DoesNotExist:
         return HttpResponse("Patient not found", status=404)
@@ -204,7 +211,7 @@ def success(request, patient_registration_id):
 
     #  return HttpResponse("<h2>Appointment booked successfully!</h2>")
 
-def patient_registration(request):
+def patient_registration(request,pk):
     if request.method == 'POST':
          print(request.POST)
          print(request.FILES)
@@ -219,6 +226,7 @@ def patient_registration(request):
          cpassword=request.POST.get('cpassword')
          print(name,email,phone,address,occupation,image,password,cpassword)
          user = Patient.objects.filter(email=email)
+        
          if user:
             x = "Email already exist"
             return render(request, 'patient_registration.html', {'msg': x})
@@ -227,15 +235,16 @@ def patient_registration(request):
          if password==cpassword:
             Patient.objects.create(name=name,email=email,phone=phone,address=address,occupation=occupation,gender=gender,image=image,password=password,)
             x = "Resgistration succesfully"
-            return render(request,'patient_registration.html',{'msg':x})
+           
+            return render(request,'landing.html',{'msg':x})
          else:
             x = "password and cpassword not match"
             return render(request,'patient_registration.html',{'msg':x,'name':name,'email':email,'phone':phone,'address':address,'occupation':occupation,'gender':gender,'image':image})
     else:
         return render(request, 'patient_registration.html')  
-    return render(request,'patient_registration.html')
+    return render(request,'patient_registration.html', pk=patient.id)
 
-    #     form = patient_registration(request.POST)
+    #form = patient_registration(request.POST)
     #     if form.is_valid():
     #         form.save()
     #         return redirect('landing')
@@ -244,10 +253,9 @@ def patient_registration(request):
     # else:
     #    form = patient_registration()
     # return render(request,'patient_registration.html')
-''', {'form': form})'''
-    
 
- 
- 
+
 def appoiment_list(request):
-    return render(request,'appoiment_list.html')
+    pt = Patient.objects.all()
+    print(pt)
+    return render(request,'appoiment_list.html',{'data':pt})
