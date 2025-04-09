@@ -169,6 +169,11 @@ def drtable(request):
 
     dr = Doctor.objects.all()
     return render(request,'drtable.html',{'data':dr})
+
+def drtable2(request,pk):
+    print(pk)
+    dr = Doctor.objects.all()
+    return render(request,'drtable2.html',{'data':dr,'id':pk})
  
 def patientbase(request):
     return render(request,'patientbase.html')
@@ -198,8 +203,7 @@ def appoiment_data(request,pk):
             time=time
         )
         appoiment.save()
-        id=pk
-        return redirect(f'/success/?id={id}')
+        return redirect(f'/success/?id={pk}')
 
     
 def success(request):
@@ -207,7 +211,7 @@ def success(request):
     print(iddd)
     try:
         patient = Patient.objects.get(id=iddd)
-        return render(request, 'success.html', {'patient': patient})
+        return render(request, 'success.html', {'patient': patient,'id':iddd})
     except Patient.DoesNotExist:
         return HttpResponse("Patient not found", status=404)
 

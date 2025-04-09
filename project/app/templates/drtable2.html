@@ -1,4 +1,4 @@
-{% extends 'drbase.html' %}
+{% extends 'patientbase.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -109,7 +109,7 @@ td a:hover {
 <th>Appoiment</th>
 
 </tr>
-
+{{id}}
 {% for i in data %}
 <tr>
 <td>{{forloop.counter}}</td>
@@ -121,7 +121,7 @@ td a:hover {
 <td>{{i.image}}</td>
 
 
-<td><a href="{% url 'patient_registration' pk=id %}">Appoiment</a></td>
+<td><a href="{% url 'appoiment' pk=id %}">Appoiment</a></td>
              
 </tr>
 {% endfor %}
