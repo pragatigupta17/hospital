@@ -15,10 +15,24 @@
     
 }
 .logo {
-    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+ .navbar .logo img {
+    height: 0px !important;
+    width: auto !important;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .logo h1 {
+    font-size: 24px;
     font-weight: bold;
-}
-
+    color: #343a40;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 .nav-links {
     list-style: none;
     display: flex;

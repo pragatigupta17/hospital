@@ -9,6 +9,11 @@ from django.http import HttpResponse
 import razorpay
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+def home(request):
+    return render(request,'home.html')
+def about(request):
+    return render(request,'about.html')
+
 def landing(request):
     adminemail="pragati@gmail.com"
     adminpassword="pragati"

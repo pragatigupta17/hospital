@@ -163,7 +163,7 @@ button:active {
 <form action="{% url 'update' pk=data4.id %}" method="post" enctype="multipart/form-data"> 
     {% csrf_token %} 
    <label for="name">Name:</label>
-   <input type="text" name="name" value="{{data4.name}}" ><br>
+   <input type="text" name="name" value="{{data4.name}}"><br>
    <label for="email">Email:</label>
    <input type="email" name="email" value="{{data4.email}}" readonly><br>
    <label for="number">Number:</label>

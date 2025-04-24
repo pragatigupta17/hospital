@@ -3,7 +3,9 @@ from django.conf.urls.static import static
 from django.urls import path
 from . import views 
 urlpatterns = [
-    path('', views.landing, name='landing'),
+    path('',views.home,name='home'),
+    path('about/',views.about,name='about'),
+    path('landing/', views.landing, name='landing'),
     path('base/', views.base, name='base'),
     path('drbase/', views.drbase, name='drbase'),
     path('patientbase/', views.patientbase, name='patientbase'),
