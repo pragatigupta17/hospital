@@ -195,6 +195,129 @@
       color: #ffdd57;
       text-decoration: underline;
     }
+
+
+    /* Extra large devices (1200px and up) */
+
+
+/* Large devices (992px to 1199px) */
+@media (max-width: 1199px) {
+  .services-container,
+  .why-us-cards,
+  .doctor-cards,
+  .testimonial-cards {
+    gap: 25px;
+  }
+}
+
+/* Medium devices (768px to 991px) */
+@media (max-width: 991px) {
+  h2 {
+    font-size: 28px;
+  }
+
+  .service-card,
+  .why-card,
+  .doctor-card,
+  .testimonial-card {
+    width: 90%;
+  }
+
+  .service-card img,
+  .doctor-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .why-card {
+    padding: 20px;
+  }
+}
+
+/* Small devices (576px to 767px) */
+@media (max-width: 767px) {
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .services-section,
+  .why-us,
+  .doctors,
+  .testimonials,
+  .emergency-contact {
+    padding: 40px 15px;
+  }
+
+  .service-card,
+  .why-card,
+  .doctor-card,
+  .testimonial-card {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .testimonial-card blockquote {
+    font-size: 15px;
+  }
+}
+
+/* Extra small devices (up to 575px) */
+@media (max-width: 575px) {
+  h2 {
+    font-size: 22px;
+  }
+
+  .service-card img,
+  .doctor-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .testimonial-card blockquote {
+    font-size: 14px;
+  }
+
+  .why-card h4 {
+    font-size: 18px;
+  }
+
+  .why-card p {
+    font-size: 13px;
+  }
+
+  .emergency-contact h3 {
+    font-size: 18px;
+  }
+}
+
+/* Ultra small devices (below 360px, like old iPhones/Androids) */
+@media (max-width: 359px) {
+  h2 {
+    font-size: 20px;
+  }
+
+  .service-card,
+  .why-card,
+  .doctor-card,
+  .testimonial-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .testimonial-card blockquote {
+    font-size: 13px;
+  }
+
+  .emergency-contact h3 {
+    font-size: 16px;
+  }
+
+  .why-card h4 {
+    font-size: 16px;
+  }
+}
+
   </style>
  {% endblock %}
 </head>

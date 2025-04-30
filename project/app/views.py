@@ -170,9 +170,9 @@ def patient_record2(request):
 def patient_list(request):
     return render(request,'patient_list.html')
  
-def drtable(request):
-    dr = Doctor.objects.all()
-    return render(request,'drtable.html',{'data':dr})
+# def drtable(request):
+#     dr = Doctor.objects.all()
+#     return render(request,'drtable.html',{'data':dr})
 
 def drtable2(request,pk):
     print(pk)
