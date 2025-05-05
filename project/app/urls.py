@@ -19,12 +19,12 @@ urlpatterns = [
     path('appoiment/<int:pk>/',views.appoiment, name='appoiment'),
     path('appoiment_data/<int:pk>/',views.appoiment_data,name='appoiment_data'),
     path('appoiment_list/',views.appoiment_list, name='appoiment_list'),
-    path('patient_registration/<int:pk>/',views.patient_registration, name='patient_registration'),
+    path('patient_registration/',views.patient_registration, name='patient_registration'),
     path('success/', views.success, name='success'),
     path('update/<int:pk>',views.update,name='update'),
     path('delete/<int:pk>',views.delete,name='delete'),
     path('edit/<int:pk>',views.edit,name='edit'),
-    path('payment/',views.payment,name='payment'),
-    path('payment-status/',views.payment_status,name='payment-status'),
+    path('payment/<int:pk>/',views.payment,name='payment'),
+    path('payment-status/<int:pk>',views.payment_status,name='payment-status'),
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

@@ -244,7 +244,7 @@ background-attachment: fixed;
     <div class="container">
 <h2>REGISTER HERE</h2>
 <h3>MAKE AN APPOINTMENT</h3>
- <form action="{% url 'patient_registration' pk=patient.id %}"method="post" enctype="multipart/form-data">
+ <form action="{% url 'patient_registration' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
     <div class="form-group">
     <div>

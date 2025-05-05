@@ -235,7 +235,7 @@ def success(request):
 
     #  return HttpResponse("<h2>Appointment booked successfully!</h2>")
 
-def patient_registration(request,pk):
+def patient_registration(request):
     if request.method == 'POST':
          print(request.POST)
          print(request.FILES)
@@ -266,7 +266,7 @@ def patient_registration(request,pk):
             return render(request,'patient_registration.html',{'msg':x,'name':name,'email':email,'phone':phone,'address':address,'occupation':occupation,'gender':gender,'image':image})
     else:
         return render(request, 'patient_registration.html')  
-    return render(request,'patient_registration.html', pk=patient.id)
+    
 
     #form = patient_registration(request.POST)
     #     if form.is_valid():
@@ -285,7 +285,7 @@ def appoiment_list(request):
     return render(request,'appoiment_list.html',{'data':pt})
 
 
-def payment(request):
+def payment(request,pk):
     if request.method=="POST":
         amount = int(request.POST.get('amount'))
         
@@ -300,11 +300,11 @@ def payment(request):
         payment = client.order.create(data=data)
         product = Product.objects.create( amount =amount , order_id = payment['id'])
         # print(payment)
-        return render(request,'success.html',{'amount':amount,'payment':payment})
-    return render(request,'success.html',{'amount':amount})
+        return render(request,'success.html',{'amount':amount,'payment':payment,'id' : pk})
+    return render(request,'success.html',{'amount':amount,'id':pk})
 
 
-def payment_status(request):
+def payment_status(request,pk):
        if request.method=="POST": 
         response = request.POST
         # print(response) 
@@ -323,6 +323,6 @@ def payment_status(request):
             product.razorpay_payment_id = response ['razorpay_payment_id']
             product.paid = True
             product.save()
-            return render(request, 'ptm.html', {'status': True})
+            return render(request, 'ptm.html', {'status': True,'id':pk})
         except:
-            return render(request, 'ptm.html', {'status': False})
+            return render(request, 'ptm.html', {'status': False,'id':pk})
